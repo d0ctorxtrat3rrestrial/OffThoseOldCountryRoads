@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bwbifw2cg1vxn"]
+
+[node name="Popup" type="Popup"]
+visible = true
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Menu" type="TabContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Video" type="TabBar" parent="Menu"]
+layout_mode = 2
+
+[node name="VideoOptionContainer" type="MarginContainer" parent="Menu/Video"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LayoutContainer" type="GridContainer" parent="Menu/Video/VideoOptionContainer"]
+layout_mode = 2
+
+[node name="DisplayModeLabel" type="Label" parent="Menu/Video/VideoOptionContainer/LayoutContainer"]
+layout_mode = 2
+
+[node name="DisplayOptionButton" type="OptionButton" parent="Menu/Video/VideoOptionContainer/LayoutContainer"]
+layout_mode = 2
+
+[node name="VsyncLabel" type="Label" parent="Menu/Video/VideoOptionContainer/LayoutContainer"]
+layout_mode = 2
+
+[node name="VsyncButton" type="CheckButton" parent="Menu/Video/VideoOptionContainer/LayoutContainer"]
+layout_mode = 2

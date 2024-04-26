@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd14y3qjyabtm"]
+
+[ext_resource type="PackedScene" uid="uid://dvxhsu72cgqe8" path="res://game/models/radio/radio.gltf" id="1_txvnp"]
+
+[node name="blockbench_export" instance=ExtResource("1_txvnp")]

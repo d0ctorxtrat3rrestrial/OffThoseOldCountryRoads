@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dm2r72ur11w1g"]
+
+[ext_resource type="Texture2D" uid="uid://bn5p2iw28ul0x" path="res://game/models/lamp/lamp.png" id="1_rd0h5"]
+[ext_resource type="Texture2D" uid="uid://b2bmv6askjvdn" path="res://game/models/lamp/lamp_1.png" id="2_2vb7f"]
+
+[resource]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("1_rd0h5")
+emission = Color(1, 0.662745, 0.196078, 1)
+emission_energy_multiplier = 7.95
+emission_operator = 1
+emission_texture = ExtResource("2_2vb7f")
+texture_filter = 2
+texture_repeat = false

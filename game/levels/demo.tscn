@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3 uid="uid://bfxltwjqv75sl"]
+
+[ext_resource type="PackedScene" uid="uid://xfdwxjgg00g1" path="res://game/objects/player.tscn" id="1_cbbcp"]
+[ext_resource type="PackedScene" uid="uid://bd14y3qjyabtm" path="res://game/objects/radiomodel.tscn" id="2_ero6o"]
+[ext_resource type="PackedScene" uid="uid://df33dui08gj2a" path="res://game/models/table/table.gltf" id="2_ntfjj"]
+[ext_resource type="PackedScene" uid="uid://cnco5pk8flwt6" path="res://game/models/door/door.gltf" id="3_c8sgt"]
+[ext_resource type="PackedScene" uid="uid://b8mvtw5pgigmw" path="res://game/models/radio/radiotuning.tscn" id="4_pl4ka"]
+[ext_resource type="PackedScene" uid="uid://b01mvew34w43c" path="res://game/models/lamp/lamp.tscn" id="5_5gq8u"]
+[ext_resource type="PackedScene" uid="uid://csvknx4jk0mmt" path="res://game/models/atticladder/atticlatter.gltf" id="6_4u55w"]
+[ext_resource type="Script" path="res://game/scripts/LightFlicker.gd" id="6_e4tkd"]
+[ext_resource type="PackedScene" uid="uid://bnufkcpxknk05" path="res://game/objects/bedhiding.tscn" id="10_u5dcd"]
+[ext_resource type="Script" path="res://game/scripts/Camera.gd" id="10_xssp7"]
+[ext_resource type="Script" path="res://game/scripts/bedhiding.gd" id="11_4nipw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m0jxk"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dc8jf"]
+
+[node name="room" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12378, 11.8705)
+
+[node name="Player" parent="." instance=ExtResource("1_cbbcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32258, 0, -11.8537)
+script = ExtResource("10_xssp7")
+
+[node name="roomBase" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="roomBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12378, 11.8705)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="roomBase/StaticBody3D"]
+transform = Transform3D(1.1113, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
+mesh = SubResource("BoxMesh_m0jxk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="roomBase/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
+shape = SubResource("BoxShape3D_dc8jf")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="roomBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.1034, 11.8705)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="roomBase/StaticBody3D2"]
+transform = Transform3D(1.1113, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00710201, -11.9302)
+mesh = SubResource("BoxMesh_m0jxk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="roomBase/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
+shape = SubResource("BoxShape3D_dc8jf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="roomBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0042, 8.46708, -0.0653)
+size = Vector3(1, 17.1881, 25)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="roomBase"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.15729, 8.19005, 11.4705)
+size = Vector3(1, 16.6646, 29.3999)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="roomBase"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.15729, 8.48986, -12.9804)
+size = Vector3(1, 17.2643, 29.3999)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="roomBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.341, 8.56053, -0.0653)
+size = Vector3(1, 17.375, 25)
+
+[node name="Area3D" parent="." instance=ExtResource("10_u5dcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3176, -1.22286, -23.7897)
+script = ExtResource("11_4nipw")
+
+[node name="objects" type="Node" parent="."]
+
+[node name="TableItems" type="Node" parent="objects"]
+
+[node name="table" parent="objects/TableItems" instance=ExtResource("2_ntfjj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.163014, -0.10885, 5.5565)
+
+[node name="radio" parent="objects/TableItems" instance=ExtResource("2_ero6o")]
+transform = Transform3D(2.13988, 0, 0.695288, 0, 2.25, 0, -0.695288, 0, 2.13988, 6.671, 3.07, 6.72634)
+
+[node name="Radio" parent="objects/TableItems/radio" instance=ExtResource("4_pl4ka")]
+transform = Transform3D(1, 0, 0.00020951, 0, 1, 0, -0.00020951, 0, 1, -0.0037303, 0.000142336, 0.0112014)
+
+[node name="lamp" parent="objects/TableItems" instance=ExtResource("5_5gq8u")]
+transform = Transform3D(2.80035, 0, -1.07613, 0, 3, 0, 1.07613, 0, 2.80035, 0.998689, 3.0672, 8.26132)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="objects/TableItems/lamp"]
+transform = Transform3D(1, 0, 2.23518e-08, 0, 1, 0, -2.23518e-08, 0, 1, 0, 0.275047, 0)
+light_color = Color(1, 0.721569, 0.419608, 1)
+light_energy = 16.0
+light_indirect_energy = 6.343
+light_volumetric_fog_energy = 0.0
+light_size = 0.29
+omni_range = 14.919
+omni_attenuation = 0.90125
+script = ExtResource("6_e4tkd")
+
+[node name="door" parent="objects" instance=ExtResource("3_c8sgt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.47, -0.0549099, 1.7558)
+
+[node name="atticladder" parent="objects" instance=ExtResource("6_4u55w")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10.1938, 0.10951, 7.71222)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999994, 0.00349065, 7.02751e-17, 1.52581e-10, -4.37111e-08, 1, 0.00349065, -0.999994, -4.37114e-08, 0, 15.2186, -9.74901)
+light_color = Color(1, 0.745098, 0.317647, 1)
+light_energy = 0.1
+light_indirect_energy = 0.0
+shadow_bias = 2.5
+directional_shadow_mode = 0
+
+[connection signal="input_event" from="Area3D" to="Player" method="_on_area_3d_input_event"]
+[connection signal="mouse_exited" from="Area3D" to="Player" method="_on_area_3d_mouse_exited"]
+[connection signal="input_event" from="objects/TableItems/radio/Radio" to="Player" method="_on_radio_input_event"]

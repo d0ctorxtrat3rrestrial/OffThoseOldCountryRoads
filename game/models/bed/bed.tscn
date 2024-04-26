@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgnf50p1lbfgf"]
+
+[ext_resource type="PackedScene" uid="uid://dd152vpxwtc5x" path="res://game/models/bed/bed.gltf" id="1_kc2sg"]
+
+[node name="blockbench_export" instance=ExtResource("1_kc2sg")]

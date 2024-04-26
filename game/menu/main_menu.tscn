@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://cysyg1tuw6eja"]
+
+[ext_resource type="Texture2D" uid="uid://bh0k6d508f85p" path="res://placeholders/placeholderimg title.png" id="1_dtc03"]
+[ext_resource type="Texture2D" uid="uid://cw2ju71tu6chr" path="res://placeholders/placeholderimg cont.png" id="2_hutsu"]
+[ext_resource type="Texture2D" uid="uid://b7wqu0ifikm15" path="res://placeholders/placeholderimg bg.png" id="3_hqdqm"]
+[ext_resource type="Texture2D" uid="uid://dq1qaa65nk1f7" path="res://placeholders/placeholderimg newgame.png" id="4_a7boa"]
+[ext_resource type="Texture2D" uid="uid://dtsi3y8bqyxi0" path="res://placeholders/placeholderimg options.png" id="5_3oxcb"]
+[ext_resource type="FontFile" uid="uid://cts33f5hcbryi" path="res://misc/SCIEP___.TTF" id="6_uw0e6"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1008.0
+offset_bottom = 792.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBackground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2282.0
+offset_bottom = 1521.0
+texture = ExtResource("3_hqdqm")
+
+[node name="MenuContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.05
+anchor_bottom = 1.05
+offset_right = -1.00024
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TitleBox" type="VBoxContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="WindowSeparator" type="Control" parent="MenuContainer/TitleBox"]
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="MenuContainer/TitleBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_dtc03")
+stretch_mode = 2
+
+[node name="CenterButtons" type="HBoxContainer" parent="MenuContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="MenuContainer/CenterButtons"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleSeparator" type="Control" parent="MenuContainer/CenterButtons/Buttons"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="MenuContainer/CenterButtons/Buttons"]
+layout_mode = 2
+icon = ExtResource("2_hutsu")
+flat = true
+icon_alignment = 1
+
+[node name="NewGame" type="Button" parent="MenuContainer/CenterButtons/Buttons"]
+layout_mode = 2
+icon = ExtResource("4_a7boa")
+flat = true
+icon_alignment = 1
+
+[node name="Options" type="Button" parent="MenuContainer/CenterButtons/Buttons"]
+layout_mode = 2
+icon = ExtResource("5_3oxcb")
+flat = true
+icon_alignment = 1
+
+[node name="Quit" type="Button" parent="MenuContainer/CenterButtons/Buttons"]
+layout_mode = 2
+icon = ExtResource("2_hutsu")
+flat = true
+icon_alignment = 1
+
+[node name="VersionSeparator" type="Control" parent="MenuContainer/CenterButtons/Buttons"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContainer/CenterButtons/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_uw0e6")
+theme_override_font_sizes/font_size = 50
+text = "Version 0.0.1b"
+horizontal_alignment = 1

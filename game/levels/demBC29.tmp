@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfxltwjqv75sl"]
+
+[ext_resource type="PackedScene" uid="uid://cm26d1da4fr63" path="res://game/objects/radio.tscn" id="1_25fxf"]
+[ext_resource type="PackedScene" uid="uid://df33dui08gj2a" path="res://models/table/table.gltf" id="2_ntfjj"]
+[ext_resource type="PackedScene" uid="uid://cnco5pk8flwt6" path="res://models/door/door.gltf" id="3_c8sgt"]
+[ext_resource type="PackedScene" uid="uid://dd152vpxwtc5x" path="res://models/bed/bed.gltf" id="4_s0l1f"]
+[ext_resource type="PackedScene" uid="uid://csvknx4jk0mmt" path="res://models/atticladder/atticlatter.gltf" id="5_djcfh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_015wf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edur0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4o0fw"]
+
+[node name="Modelreference" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12378, 11.8705)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(23.5943, 0, 0, 0, 1, 0, 0, 0, 19.2665, 0.608381, -1.73263, -15.0118)
+physics_material_override = SubResource("PhysicsMaterial_015wf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_edur0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.21484, 0, 0.114098, 0.101277)
+mesh = SubResource("BoxMesh_4o0fw")
+
+[node name="Area3D" parent="." instance=ExtResource("1_25fxf")]
+
+[node name="table" parent="." instance=ExtResource("2_ntfjj")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.89831, -1.23263, -6.59244)
+
+[node name="door" parent="." instance=ExtResource("3_c8sgt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.90101, -1.23263, -10.77)
+
+[node name="bed" parent="." instance=ExtResource("4_s0l1f")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -3.41055, -1.23263, -24.1103)
+
+[node name="blockbench_export" parent="." instance=ExtResource("5_djcfh")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5.68585, -1.23263, -5.8063)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.27826e-06, 0.00174532, -0.999999, -0.00174533, 0.999997, 0.00174533, 0.999999, 0.00174533, -2.32085e-07, 1.27421, 3.16659, -11.8628)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.64553, 7.28283, -14.6755)
+sky_mode = 1
