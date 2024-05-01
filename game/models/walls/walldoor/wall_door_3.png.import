@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfragr6yxp5hj"
-path.s3tc="res://.godot/imported/radio_0.png-3fbe568767a13ce1158c29f2708351d4.s3tc.ctex"
+uid="uid://dbhxp24rif21q"
+path.s3tc="res://.godot/imported/wall_door_3.png-90ed2192dedafd14f881c48156159e40.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://radio_0.png"
-dest_files=["res://.godot/imported/radio_0.png-3fbe568767a13ce1158c29f2708351d4.s3tc.ctex"]
+source_file="res://game/models/walls/walldoor/wall_door_3.png"
+dest_files=["res://.godot/imported/wall_door_3.png-90ed2192dedafd14f881c48156159e40.s3tc.ctex"]
 
 [params]
 

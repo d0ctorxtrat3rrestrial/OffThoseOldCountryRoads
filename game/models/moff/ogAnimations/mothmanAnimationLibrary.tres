@@ -1,0 +1,14 @@
+[gd_resource type="AnimationLibrary" load_steps=5 format=3 uid="uid://odyufakdd6m4"]
+
+[ext_resource type="Animation" uid="uid://bffat6qmty7ai" path="res://game/models/moff/ogAnimations/jumpscare.res" id="1_0uy3i"]
+[ext_resource type="Animation" uid="uid://bg12kdu16603y" path="res://game/models/moff/ogAnimations/pose1.res" id="2_wdkw4"]
+[ext_resource type="Animation" uid="uid://c5jblldgnvyi8" path="res://game/models/moff/ogAnimations/pose2.res" id="3_55k4w"]
+[ext_resource type="Animation" uid="uid://dbr5tv4pyxded" path="res://game/models/moff/ogAnimations/pose3.res" id="4_spnvm"]
+
+[resource]
+_data = {
+"jumpscare": ExtResource("1_0uy3i"),
+"pose1": ExtResource("2_wdkw4"),
+"pose2": ExtResource("3_55k4w"),
+"pose3": ExtResource("4_spnvm")
+}

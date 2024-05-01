@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://xfdwxjgg00g1"]
 
 [node name="Player" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.149546, -0.224334, 0.0791616)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-3.3283e-06, 0.00174532, -0.999999, -0.00174533, 0.999997, 0.00174532, 0.999999, 0.00174533, -2.8213e-07, 0.0258424, 4.07424, 0.0127294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0258424, 4.07424, 0.0127294)
 current = true

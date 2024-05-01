@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dprsxmnryg3x2"]
+
+[ext_resource type="PackedScene" path="res://game/models/walls/wall2/wall2.gltf" id="1_ops5e"]
+
+[node name="blockbench_export" instance=ExtResource("1_ops5e")]

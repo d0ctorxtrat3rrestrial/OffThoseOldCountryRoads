@@ -1,37 +1,581 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfxltwjqv75sl"]
+[gd_scene load_steps=59 format=3 uid="uid://bfxltwjqv75sl"]
 
 [ext_resource type="PackedScene" uid="uid://xfdwxjgg00g1" path="res://game/objects/player.tscn" id="1_cbbcp"]
+[ext_resource type="Script" path="res://game/scripts/global.gd" id="1_wwi14"]
 [ext_resource type="PackedScene" uid="uid://bd14y3qjyabtm" path="res://game/objects/radiomodel.tscn" id="2_ero6o"]
 [ext_resource type="PackedScene" uid="uid://df33dui08gj2a" path="res://game/models/table/table.gltf" id="2_ntfjj"]
 [ext_resource type="PackedScene" uid="uid://cnco5pk8flwt6" path="res://game/models/door/door.gltf" id="3_c8sgt"]
+[ext_resource type="Script" path="res://game/scripts/MainCamera.gd" id="4_amwv1"]
 [ext_resource type="PackedScene" uid="uid://b8mvtw5pgigmw" path="res://game/models/radio/radiotuning.tscn" id="4_pl4ka"]
 [ext_resource type="PackedScene" uid="uid://b01mvew34w43c" path="res://game/models/lamp/lamp.tscn" id="5_5gq8u"]
-[ext_resource type="PackedScene" uid="uid://csvknx4jk0mmt" path="res://game/models/atticladder/atticlatter.gltf" id="6_4u55w"]
+[ext_resource type="Script" path="res://game/scripts/HideCamera.gd" id="5_so4ti"]
+[ext_resource type="Script" path="res://game/scripts/bed_ui.gd" id="6_crnt7"]
 [ext_resource type="Script" path="res://game/scripts/LightFlicker.gd" id="6_e4tkd"]
+[ext_resource type="Script" path="res://game/scripts/buttonController.gd" id="6_i26k4"]
+[ext_resource type="Texture2D" uid="uid://dgjypnwkc57se" path="res://placeholders/placeholder GetUp.png" id="6_jhr0t"]
+[ext_resource type="Texture2D" uid="uid://bm0oc3l2cvw3d" path="res://placeholders/placeholder GoBack.png" id="6_pho5r"]
+[ext_resource type="Script" path="res://game/scripts/AtticCamera.gd" id="9_cx2pp"]
+[ext_resource type="PackedScene" uid="uid://bf1jrtvcn25y7" path="res://game/models/walls/wall1/wall1.tscn" id="10_34f8t"]
+[ext_resource type="Script" path="res://game/scripts/attic_ui.gd" id="10_k8nxi"]
+[ext_resource type="PackedScene" uid="uid://fot8fpv4smlm" path="res://game/objects/attic.tscn" id="10_m4w5f"]
+[ext_resource type="Script" path="res://game/scripts/AtticButtonController.gd" id="10_tvbdy"]
 [ext_resource type="PackedScene" uid="uid://bnufkcpxknk05" path="res://game/objects/bedhiding.tscn" id="10_u5dcd"]
-[ext_resource type="Script" path="res://game/scripts/Camera.gd" id="10_xssp7"]
-[ext_resource type="Script" path="res://game/scripts/bedhiding.gd" id="11_4nipw"]
+[ext_resource type="Script" path="res://game/scripts/Player.gd" id="10_xssp7"]
+[ext_resource type="PackedScene" uid="uid://dprsxmnryg3x2" path="res://game/models/walls/wall2/wall2.tscn" id="11_itbdv"]
+[ext_resource type="PackedScene" uid="uid://cqdyv70hsh0qg" path="res://game/models/walls/wall3/wall3.tscn" id="12_072qw"]
+[ext_resource type="Script" path="res://game/scripts/GameOver.gd" id="12_a8csc"]
+[ext_resource type="Script" path="res://game/scripts/enterattic.gd" id="12_jf35e"]
+[ext_resource type="PackedScene" uid="uid://ccf6ffixaopcq" path="res://game/models/moff/Mothman.tscn" id="14_1doyq"]
+[ext_resource type="Texture2D" uid="uid://2bwncvperyid" path="res://game/2Dassets/woodFloor.png" id="14_uqg5x"]
+[ext_resource type="PackedScene" uid="uid://dos048o3c75iq" path="res://game/models/walls/walldoor/walldoor.tscn" id="18_6yp2m"]
+[ext_resource type="PackedScene" uid="uid://bxng613723580" path="res://game/models/misc/dresser/dresser.gltf" id="22_fac3w"]
+[ext_resource type="PackedScene" uid="uid://c5lgw3rs8nj7p" path="res://game/models/attic/attic.tscn" id="24_hgvaa"]
+[ext_resource type="Script" path="res://game/scripts/Cryptid_Manager.gd" id="30_8m5fw"]
+[ext_resource type="Animation" uid="uid://bg12kdu16603y" path="res://game/models/moff/ogAnimations/pose1.res" id="31_tyngy"]
+[ext_resource type="Animation" uid="uid://c5jblldgnvyi8" path="res://game/models/moff/ogAnimations/pose2.res" id="32_pguo0"]
+[ext_resource type="Animation" uid="uid://bbjyhjplo1ri1" path="res://game/models/moff/ogAnimations/renderPose.res" id="33_1w4pj"]
+[ext_resource type="Animation" uid="uid://dbr5tv4pyxded" path="res://game/models/moff/ogAnimations/pose3.res" id="33_glslq"]
+[ext_resource type="Script" path="res://game/scripts/jumpscare.gd" id="35_0cvn3"]
+[ext_resource type="Animation" uid="uid://bffat6qmty7ai" path="res://game/models/moff/ogAnimations/jumpscare.res" id="36_e4fam"]
+[ext_resource type="AudioStream" uid="uid://ddj4xxsjvkap4" path="res://game/sounds/mothJumpscare.mp3" id="38_lcwp0"]
+[ext_resource type="AudioStream" uid="uid://cbmry6pqvp7r7" path="res://game/sounds/background.mp3" id="39_c87je"]
+[ext_resource type="Script" path="res://game/levels/Ambience.gd" id="40_daalq"]
+
+[sub_resource type="Animation" id="Animation_a6ncu"]
+resource_name = "bed_hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.501, -1.242, -11.866, 0.5, 1, 5.75, -6.398, -8.314, 1, 1, 11.4995, -6.39822, -4.76153)
+
+[sub_resource type="Animation" id="Animation_ais13"]
+resource_name = "bed_hide_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 11.4995, -6.39822, -4.76153, 0.5, 1, 5.75, -6.398, -8.314, 1, 1, 0, -1.242, -11.866)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjin7"]
+_data = {
+"bed_hide": SubResource("Animation_a6ncu"),
+"bed_leave": SubResource("Animation_ais13")
+}
+
+[sub_resource type="Animation" id="Animation_nu53i"]
+resource_name = "bed_leave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 11.5, -6.398, -4.762, 0.5, 1, 5.75, -6.398, -8.314, 1, 1, -0.501, -1.521, -11.866)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpulm"]
+_data = {
+"bed_leave": SubResource("Animation_nu53i")
+}
+
+[sub_resource type="Animation" id="Animation_4eno0"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_e8r54"]
+resource_name = "enter_attic"
+length = 2.3
+step = 0.05
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Player")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 46.948, -2.549, -16.925, 0.35, 1, 47.904, -3.703, -17.848, 0.45, 1, 38.5292, -13.1904, -18.5157, 0.65, 1, 12.5599, 16.8284, -19.8512, 0.75, 1, 10.405, 8.898, -20.519, 0.8, 1, 10.9949, 6.47214, -20.5187, 0.95, 1, 10.9949, 4.25187, -20.1864, 1.15, 1, 10.9949, 0.84863, -20.0346, 1.5, 1, 10.9949, 1.38576, -20.0346, 1.85, 1, 10.9949, -1.84953, -18.5988, 2.25, 1, -0.501, -1.242, -11.866)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.75, 1.5, 1.85, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.165806, 2.64592, -0.00349066), Vector3(0.165806, 2.64592, -0.00349066), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, -1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/AtticCamera/fade/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.8, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player/AtticCamera/fade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iogdn"]
+_data = {
+"RESET": SubResource("Animation_4eno0"),
+"leave_attic": SubResource("Animation_e8r54")
+}
+
+[sub_resource type="Animation" id="Animation_nnttn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/AtticCamera/fade/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ww3xc"]
+resource_name = "enter_attic"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.1, 1.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.165806, 2.64592, -0.00349066)]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.501, -1.242, -11.866, 0.4, 1, 10.995, -1.85, -18.599, 0.6, 1, 10.995, 1.386, -20.035, 0.8, 1, 10.995, 4.74, -20.186, 0.95, 1, 10.995, 4.252, -20.186, 1, 1, 10.995, 6.937, -20.519, 1.1, 1, 10.995, 6.937, -20.519, 1.25, 1, 47.904, -3.703, -17.848, 1.5, 1, 46.948, -2.549, -16.925)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/AtticCamera/fade/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.95, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player/AtticCamera/fade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.05, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player/AtticCamera/AtticButtonController/GoBack_Button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r285o"]
+_data = {
+"RESET": SubResource("Animation_nnttn"),
+"enter_attic": SubResource("Animation_ww3xc")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kff3"]
+shading_mode = 2
+diffuse_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("14_uqg5x")
+uv1_scale = Vector3(5, 5, 5)
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_il53o"]
+lightmap_size_hint = Vector2i(234, 141)
+material = SubResource("StandardMaterial3D_5kff3")
+size = Vector3(25, 1, 35.335)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dc8jf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_m0jxk"]
 size = Vector3(25, 1, 25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dc8jf"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3okql"]
+_data = {
+"moffJumpscare": ExtResource("36_e4fam"),
+"pose1": ExtResource("31_tyngy"),
+"pose2": ExtResource("32_pguo0"),
+"pose3": ExtResource("33_glslq"),
+"render": ExtResource("33_1w4pj")
+}
 
-[node name="room" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12378, 11.8705)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lyt1s"]
+_data = {
+"jumpscare": ExtResource("36_e4fam")
+}
+
+[sub_resource type="Environment" id="Environment_3k6b1"]
+background_mode = 2
+
+[node name="Game" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.627, -11.874)
+script = ExtResource("1_wwi14")
+
+[node name="CameraAnimator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_pjin7")
+}
+
+[node name="CameraAnimator2" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_fpulm")
+}
+
+[node name="AtticCameraAnimator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_iogdn")
+}
+
+[node name="AtticCameraAnimator2" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_r285o")
+}
 
 [node name="Player" parent="." instance=ExtResource("1_cbbcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32258, 0, -11.8537)
+unique_name_in_owner = true
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, -0.501, -1.242, -11.866)
 script = ExtResource("10_xssp7")
 
+[node name="Camera3D" parent="Player" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0548267, 4.0809, 0.0181119)
+fov = 74.1484
+script = ExtResource("4_amwv1")
+
+[node name="HideCamera" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0510564, 4.074, 0.013)
+current = true
+fov = 74.1484
+script = ExtResource("5_so4ti")
+
+[node name="ButtonController" type="CanvasLayer" parent="Player/HideCamera"]
+visible = false
+script = ExtResource("6_i26k4")
+
+[node name="GetUp_Button" type="Button" parent="Player/HideCamera/ButtonController"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.376
+anchor_top = 0.738
+anchor_right = 0.681
+anchor_bottom = 1.023
+offset_left = -0.0240173
+offset_top = 0.199982
+offset_right = 183.656
+offset_bottom = 100.2
+scale = Vector2(0.63, 0.63)
+icon = ExtResource("6_jhr0t")
+flat = true
+script = ExtResource("6_crnt7")
+
+[node name="AtticCamera" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055, 4.081, 0.018)
+script = ExtResource("9_cx2pp")
+
+[node name="fade" type="CanvasLayer" parent="Player/AtticCamera"]
+
+[node name="ColorRect" type="ColorRect" parent="Player/AtticCamera/fade"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+anchors_preset = -1
+anchor_right = 1.085
+anchor_bottom = 1.105
+offset_right = -0.0400391
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AtticButtonController" type="CanvasLayer" parent="Player/AtticCamera"]
+visible = false
+script = ExtResource("10_tvbdy")
+
+[node name="GoBack_Button" type="Button" parent="Player/AtticCamera/AtticButtonController"]
+visible = false
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.376
+anchor_top = 0.738
+anchor_right = 0.681
+anchor_bottom = 1.023
+offset_left = -0.0240173
+offset_top = 0.199982
+offset_right = 183.656
+offset_bottom = 100.2
+scale = Vector2(0.63, 0.63)
+icon = ExtResource("6_pho5r")
+flat = true
+script = ExtResource("10_k8nxi")
+
+[node name="CryptidController" type="Node3D" parent="."]
+script = ExtResource("30_8m5fw")
+
+[node name="MothmanPositions" type="Node" parent="CryptidController"]
+
+[node name="Position1" type="Marker3D" parent="CryptidController/MothmanPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.883, 2.57584, -10.7814)
+gizmo_extents = 2.85
+
+[node name="Position2" type="Marker3D" parent="CryptidController/MothmanPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5284, 2.66835, -7.7732)
+gizmo_extents = 2.7
+
+[node name="Position3" type="Marker3D" parent="CryptidController/MothmanPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.381, 2.76979, -1.23286)
+gizmo_extents = 5.3
+
+[node name="Mothman" parent="CryptidController" instance=ExtResource("14_1doyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53044, 0, 10.4339)
+
+[node name="moth" parent="CryptidController/Mothman/blockbench_export/Node" index="0"]
+transform = Transform3D(0.5373, 0, 0.843391, 0, 1, 0, -0.843391, 0, 0.5373, 0, 3.891, 0)
+
+[node name="upperbody" parent="CryptidController/Mothman/blockbench_export/Node/moth/body" index="0"]
+transform = Transform3D(0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0, 1, -0.126, 4.392, 0.115)
+
+[node name="torso" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody" index="0"]
+transform = Transform3D(0.382683, 0.923879, 0, -0.923879, 0.382683, 0, 0, 0, 1, 0.139, 0.008, -0.115)
+
+[node name="heead" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso" index="1"]
+transform = Transform3D(0.642788, -0.747886, 0.165802, 0.766044, 0.627551, -0.139125, -1.49012e-08, 0.21644, 0.976296, -0.84405, 0.8896, 0.01875)
+
+[node name="mouthLeft" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth" index="0"]
+transform = Transform3D(0.653973, -0.599256, -0.461749, 0.67559, 0.737277, 0, 0.340437, -0.311953, 0.887011, 0.68525, 0.09525, 0.56125)
+
+[node name="segment2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth/mouthLeft" index="1"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0.083875, -0.038, 0)
+
+[node name="segment3" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth/mouthLeft/segment2" index="1"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0.126625, 0.00825, -0.002)
+
+[node name="mouthRight" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth" index="1"]
+transform = Transform3D(0.792529, -0.288457, 0.5373, 0.34202, 0.939693, -7.45058e-09, -0.504897, 0.183767, 0.843391, 0.66725, 0.16725, 0.0621875)
+
+[node name="segment4" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth/mouthRight" index="1"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0.07175, -0.09825, -0.01425)
+
+[node name="segment5" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth/mouthRight/segment4" index="1"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0.10575, -0.0075, 0.01225)
+
+[node name="leftAntennae" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236125, 0.661375, 0.5165)
+
+[node name="segment" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae/leftAntennae" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3365, 0.012)
+
+[node name="rightAntennae" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236125, 0.639375, 0.0965)
+
+[node name="segment6" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae/rightAntennae" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77556e-17, 0.3495, -2.77556e-17)
+
+[node name="chest" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso" index="2"]
+transform = Transform3D(0.887011, -0.461749, 0, 0.461749, 0.887011, 0, 0, 0, 1, -0.09, -0.308, -0.284)
+
+[node name="rightArm" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms" index="0"]
+transform = Transform3D(0.2965, 0.534673, 0.791336, -0.0999888, 0.841421, -0.531049, -0.949784, 0.0783312, 0.302942, -0.47725, 5.36742, 0.571554)
+
+[node name="elbow" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm" index="3"]
+transform = Transform3D(0.984808, -1.86265e-09, 0.173648, -0.0226656, 0.991445, 0.128543, -0.172163, -0.130526, 0.976383, -0.0282083, -0.0548354, 1.36248)
+
+[node name="hand" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow" index="3"]
+transform = Transform3D(0.833518, -0.218585, -0.507414, 0.550971, 0.396974, 0.734059, 0.0409762, -0.891422, 0.451319, 0.0182083, -0.0298333, 1.50772)
+
+[node name="handSegment" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, -0.254, 0.083)
+
+[node name="pointerFinger" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0.132, -0.464, 0.0465)
+
+[node name="fingerSegment" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pointerFinger" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 1.66533e-16, -0.209, 0.009)
+
+[node name="fingerSegment2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pointerFinger/fingerSegment" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.737277, -0.67559, 0, 0.67559, 0.737277, 5.55112e-17, -0.202, 0.012)
+
+[node name="middleFinger" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0.002, -0.4755, 0.0465)
+
+[node name="fingerSegment3" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/middleFinger" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.887011, -0.461749, 0, 0.461749, 0.887011, 1.66533e-16, -0.26, 0.0085)
+
+[node name="fingerSegment4" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/middleFinger/fingerSegment3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.887011, -0.461749, 0, 0.461749, 0.887011, -1.66533e-16, -0.1905, 0.0125)
+
+[node name="pinkieFinger" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.976296, -0.21644, 0, 0.21644, 0.976296, -0.131, -0.466, 0.0465)
+
+[node name="fingerSegment5" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pinkieFinger" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, -2.42861e-17, -0.206, 0.009)
+
+[node name="fingerSegment6" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pinkieFinger/fingerSegment5" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.887011, -0.461749, 0, 0.461749, 0.887011, 5.55112e-17, -0.178, 0.012)
+
+[node name="thumb" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="4"]
+transform = Transform3D(0.976296, -0.21644, 0, 0.159576, 0.719801, -0.67559, 0.146224, 0.659576, 0.737277, 0.1555, -0.3265, -0.0835)
+
+[node name="thumbSegment" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/thumb" index="1"]
+transform = Transform3D(0.953717, 0.300706, 0, -0.300706, 0.953717, 0, 0, 0, 1, -0.003, -0.22925, 0)
+
+[node name="thumbSegment2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/thumb/thumbSegment" index="2"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0.0055, -0.19725, 4.44089e-16)
+
+[node name="leftArm" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms" index="1"]
+transform = Transform3D(-0.865822, 0.140415, 0.480246, -0.20374, 0.777701, -0.594702, -0.456993, -0.612752, -0.644742, -0.27725, 5.26742, -0.763554)
+
+[node name="elbow2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm" index="3"]
+transform = Transform3D(0.887011, 0.176704, 0.4266, -0.446015, 0.566996, 0.692522, -0.119509, -0.804544, 0.581744, 0.00220833, -0.0478333, 1.23948)
+
+[node name="hand2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2" index="3"]
+transform = Transform3D(0.953717, 0.115075, 0.277816, -0.286788, 0.625896, 0.725263, -0.090424, -0.77137, 0.629929, -0.0182083, -0.0498333, 1.52272)
+
+[node name="handSegment2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 2.77556e-17, -0.258, 0.116)
+
+[node name="rightLeg" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs" index="0"]
+transform = Transform3D(0.839544, -0.366042, -0.401471, 0.440243, 0.89137, 0.107916, 0.318357, -0.267345, 0.909492, 0.307125, 3.87263, 0.338875)
+
+[node name="knee" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs/rightLeg" index="4"]
+transform = Transform3D(0.793353, 0.608761, 0, -0.608761, 0.793353, 0, 0, 0, 1, 0.270375, -1.64338, -0.046625)
+
+[node name="foot" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs/rightLeg/knee/otherJoint" index="3"]
+transform = Transform3D(0.998842, 0.03748, -0.0301537, -0.0388495, 0.998177, -0.046195, 0.0283673, 0.0473129, 0.998477, -0.0736667, -2.007, -0.005)
+
+[node name="toes" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs/rightLeg/knee/otherJoint/foot" index="1"]
+transform = Transform3D(0.978148, -0.207912, 0, 0.207912, 0.978148, 0, 0, 0, 1, 0.5755, -0.012, 0)
+
+[node name="leftLeg" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs" index="1"]
+transform = Transform3D(0.660806, -0.591481, 0.462045, 0.688704, 0.722556, -0.0599982, -0.298365, 0.357859, 0.884825, 0.307125, 3.67362, -0.338875)
+
+[node name="knee2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs/leftLeg" index="4"]
+transform = Transform3D(0.608761, 0.793353, 0, -0.793353, 0.608761, 0, 0, 0, 1, 0.044875, -1.35063, 0.043875)
+
+[node name="otherJoint2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs/leftLeg/knee2" index="2"]
+transform = Transform3D(0.991445, -0.130526, 0, 0.130526, 0.991445, 0, 0, 0, 1, -0.836583, -0.08925, 0.00875)
+
+[node name="foot2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs/leftLeg/knee2/otherJoint2" index="3"]
+transform = Transform3D(0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 0, 0, 1, 0.0623333, -2.037, 0.005)
+
+[node name="toes2" parent="CryptidController/Mothman/blockbench_export/Node/moth/body/legs/leftLeg/knee2/otherJoint2/foot2" index="1"]
+transform = Transform3D(0.976296, -0.21644, 0, 0.21644, 0.976296, 0, 0, 0, 1, 0.6475, -0.012, 0)
+
+[node name="MothMove" type="AudioStreamPlayer" parent="CryptidController"]
+
+[node name="Bed" parent="." instance=ExtResource("10_u5dcd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.01594, -3.09929, 0.031868)
+
+[node name="AtticLadder" parent="." instance=ExtResource("10_m4w5f")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 10.2551, -2.46147, -19.6651)
+script = ExtResource("12_jf35e")
+
 [node name="roomBase" type="Node" parent="."]
+
+[node name="wallDoor" parent="roomBase" instance=ExtResource("18_6yp2m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.4383, 0, 1.73312)
+
+[node name="wall1" parent="roomBase" instance=ExtResource("10_34f8t")]
+transform = Transform3D(-1.065, 0, -8.74228e-08, 0, 1, 0, 9.31053e-08, 0, -1, 2.10539, 0, -12.7687)
+
+[node name="wall2" parent="roomBase" instance=ExtResource("11_itbdv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.2444, 0, -0.694589)
+
+[node name="wall3" parent="roomBase" instance=ExtResource("12_072qw")]
+transform = Transform3D(1.111, 0, 0, 0, 1, 0, 0, 0, 1, -2.68246, -0.0676405, 12.2986)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="roomBase"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12378, 11.8705)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="roomBase/StaticBody3D"]
 transform = Transform3D(1.1113, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
-mesh = SubResource("BoxMesh_m0jxk")
+mesh = SubResource("BoxMesh_il53o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="roomBase/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
@@ -47,26 +591,6 @@ mesh = SubResource("BoxMesh_m0jxk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="roomBase/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
 shape = SubResource("BoxShape3D_dc8jf")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="roomBase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0042, 8.46708, -0.0653)
-size = Vector3(1, 17.1881, 25)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="roomBase"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.15729, 8.19005, 11.4705)
-size = Vector3(1, 16.6646, 29.3999)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="roomBase"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.15729, 8.48986, -12.9804)
-size = Vector3(1, 17.2643, 29.3999)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="roomBase"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.341, 8.56053, -0.0653)
-size = Vector3(1, 17.375, 25)
-
-[node name="Area3D" parent="." instance=ExtResource("10_u5dcd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3176, -1.22286, -23.7897)
-script = ExtResource("11_4nipw")
 
 [node name="objects" type="Node" parent="."]
 
@@ -88,27 +612,250 @@ transform = Transform3D(2.80035, 0, -1.07613, 0, 3, 0, 1.07613, 0, 2.80035, 0.99
 transform = Transform3D(1, 0, 2.23518e-08, 0, 1, 0, -2.23518e-08, 0, 1, 0, 0.275047, 0)
 light_color = Color(1, 0.721569, 0.419608, 1)
 light_energy = 16.0
-light_indirect_energy = 6.343
+light_indirect_energy = 5.716
 light_volumetric_fog_energy = 0.0
 light_size = 0.29
-omni_range = 14.919
-omni_attenuation = 0.90125
+omni_range = 28.646
 script = ExtResource("6_e4tkd")
 
 [node name="door" parent="objects" instance=ExtResource("3_c8sgt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.47, -0.0549099, 1.7558)
 
-[node name="atticladder" parent="objects" instance=ExtResource("6_4u55w")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10.1938, 0.10951, 7.71222)
+[node name="clutter" type="Node" parent="objects"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.999994, 0.00349065, 7.02751e-17, 1.52581e-10, -4.37111e-08, 1, 0.00349065, -0.999994, -4.37114e-08, 0, 15.2186, -9.74901)
-light_color = Color(1, 0.745098, 0.317647, 1)
-light_energy = 0.1
-light_indirect_energy = 0.0
-shadow_bias = 2.5
-directional_shadow_mode = 0
+[node name="dresser" parent="objects/clutter" instance=ExtResource("22_fac3w")]
+transform = Transform3D(-1.585, 0, -1.7138e-07, 0, 1.225, 0, 2.39328e-07, 0, -1.135, -0.444922, -0.774798, -10.8177)
 
-[connection signal="input_event" from="Area3D" to="Player" method="_on_area_3d_input_event"]
-[connection signal="mouse_exited" from="Area3D" to="Player" method="_on_area_3d_mouse_exited"]
+[node name="GameOver" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.03806e-06, -2.627, -11.874)
+script = ExtResource("12_a8csc")
+
+[node name="attic" type="Node" parent="."]
+
+[node name="attic" parent="attic" instance=ExtResource("24_hgvaa")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -39.1466, 2.06135, -0.729492)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="attic"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -37.0914, 3.75078, -11.1044)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="attic/StaticBody3D"]
+transform = Transform3D(1.1113, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
+mesh = SubResource("BoxMesh_il53o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="attic/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.69115, -11.9302)
+shape = SubResource("BoxShape3D_dc8jf")
+
+[node name="atticController" type="Node3D" parent="attic"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.627, -11.874)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="attic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0877, 14.0679, -14.3263)
+light_color = Color(1, 0.709804, 0.290196, 1)
+light_energy = 2.113
+light_indirect_energy = 3.87
+light_size = 1.0
+light_specular = 1.258
+omni_range = 35.853
+omni_attenuation = 1.62451
+omni_shadow_mode = 0
+
+[node name="Jumpscare" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.5726, 0, -10.7025)
+script = ExtResource("35_0cvn3")
+
+[node name="Mothman" parent="Jumpscare" instance=ExtResource("14_1doyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.36058, 0, 6.41059)
+
+[node name="moth" parent="Jumpscare/Mothman/blockbench_export/Node" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.891, -9.91)
+
+[node name="upperbody" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body" index="0"]
+transform = Transform3D(0.953717, 0.300706, 0, -0.300706, 0.953717, 0, 0, 0, 1, 0.074, 4.492, 0.115)
+
+[node name="torso" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody" index="0"]
+transform = Transform3D(0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 0, 0, 1, 0.139, 0.008, -0.115)
+
+[node name="heead" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso" index="1"]
+transform = Transform3D(0.642787, -0.766044, 0, 0.766044, 0.642787, 0, 0, 0, 1, 0.05595, 1.2236, 0.01875)
+
+[node name="mouthLeft" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth" index="0"]
+transform = Transform3D(-0.0873007, -0.595677, -0.798465, 0.91486, 0.269247, -0.300893, 0.39422, -0.756752, 0.521456, 0.61825, 0.09525, 0.61325)
+
+[node name="segment2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth/mouthLeft" index="1"]
+transform = Transform3D(0.92388, 0.382683, 0, -0.382683, 0.92388, 0, 0, 0, 1, 0.083875, -0.038, 0)
+
+[node name="segment3" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth/mouthLeft/segment2" index="1"]
+transform = Transform3D(0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0, 1, 0.126625, 0.00825, -0.002)
+
+[node name="mouthRight" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth" index="1"]
+transform = Transform3D(0.0949942, -0.61297, 0.784375, 0.966987, 0.243978, 0.0735529, -0.236456, 0.751493, 0.615911, 0.66725, 0.16725, 0.0091875)
+
+[node name="segment5" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/mouth/mouthRight/segment4" index="1"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 0.10575, -0.0075, 0.01225)
+
+[node name="leftAntennae" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae" index="0"]
+transform = Transform3D(0.927183, -0.374606, 0, 0.374606, 0.927183, 0, 0, 0, 1, 0.236125, 0.661375, 0.5165)
+
+[node name="segment" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae/leftAntennae" index="1"]
+transform = Transform3D(0.898794, -0.438371, 0, 0.438371, 0.898794, 0, 0, 0, 1, 0, 0.3365, 0.012)
+
+[node name="rightAntennae" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae" index="1"]
+transform = Transform3D(0.731353, -0.681998, 0, 0.681998, 0.731353, 0, 0, 0, 1, 0.236125, 0.639375, 0.0965)
+
+[node name="segment6" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/heead/antennae/rightAntennae" index="1"]
+transform = Transform3D(0.979925, -0.199368, 0, 0.199368, 0.979925, 0, 0, 0, 1, 2.77556e-17, 0.3495, -2.77556e-17)
+
+[node name="rightArm" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 0.12275, 5.38242, 0.725554)
+
+[node name="elbow" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm" index="3"]
+transform = Transform3D(-0.835126, -0.549509, 0.024599, -0.295835, 0.486404, 0.822127, -0.463731, 0.679302, -0.568772, -0.0282083, -0.0548354, 1.36248)
+
+[node name="hand" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow" index="3"]
+transform = Transform3D(1, 0, 0, 0, -0.224951, 0.97437, 0, -0.97437, -0.224951, 0.0182083, -0.229833, 1.50772)
+
+[node name="handSegment" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.843391, -0.5373, 0, 0.5373, 0.843391, 0, -0.254, 0.083)
+
+[node name="pointerFinger" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="1"]
+transform = Transform3D(0.959567, -0.257247, 0.114258, 0.144589, 0.798744, 0.584039, -0.241505, -0.543904, 0.803644, 0.132, -0.464, 0.0465)
+
+[node name="fingerSegment" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pointerFinger" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.951057, -0.309017, 0, 0.309017, 0.951057, 1.66533e-16, -0.209, 0.009)
+
+[node name="fingerSegment2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pointerFinger/fingerSegment" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 5.55112e-17, -0.202, 0.012)
+
+[node name="middleFinger" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.469472, 0.882948, 0, -0.882948, 0.469472, 0.002, -0.4755, 0.0465)
+
+[node name="fingerSegment3" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/middleFinger" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.642788, -0.766044, 0, 0.766044, 0.642788, 1.66533e-16, -0.26, 0.0085)
+
+[node name="fingerSegment4" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/middleFinger/fingerSegment3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, -1.66533e-16, -0.1905, 0.0125)
+
+[node name="pinkieFinger" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="3"]
+transform = Transform3D(0.963063, 0.21193, -0.166117, -0.0423512, 0.728439, 0.6838, 0.265924, -0.651507, 0.710509, -0.131, -0.466, 0.0465)
+
+[node name="fingerSegment5" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pinkieFinger" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.920505, -0.390731, 0, 0.390731, 0.920505, -2.42861e-17, -0.206, 0.009)
+
+[node name="fingerSegment6" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/pinkieFinger/fingerSegment5" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 5.55112e-17, -0.178, 0.012)
+
+[node name="thumb" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment" index="4"]
+transform = Transform3D(0.457998, -0.882789, 0.104504, 0.885688, 0.443085, -0.138682, 0.0761223, 0.156074, 0.984808, 0.1555, -0.3265, -0.0835)
+
+[node name="thumbSegment" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/thumb" index="1"]
+transform = Transform3D(0.882948, 0.469472, 0, -0.469472, 0.882948, 0, 0, 0, 1, -0.003, -0.22925, 0)
+
+[node name="thumbSegment2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/rightArm/elbow/hand/handSegment/thumb/thumbSegment" index="2"]
+transform = Transform3D(0.891007, 0.45399, 0, -0.45399, 0.891007, 0, 0, 0, 1, 0.0055, -0.19725, 4.44089e-16)
+
+[node name="leftArm" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms" index="1"]
+transform = Transform3D(-1, 7.37316e-08, 4.69722e-08, 3.30872e-24, 0.5373, -0.843391, -8.74228e-08, -0.843391, -0.5373, 0.12275, 5.28342, -0.796554)
+
+[node name="elbow2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm" index="3"]
+transform = Transform3D(-0.848257, 0.509958, -0.14284, 0.238566, 0.608761, 0.756635, 0.472807, 0.607744, -0.638045, 0.00220833, -0.0478333, 1.23948)
+
+[node name="hand2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2" index="3"]
+transform = Transform3D(1, 0, 0, 0, -0.104528, 0.994522, 0, -0.994522, -0.104528, -0.0182083, -0.149833, 1.52272)
+
+[node name="handSegment2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.945519, -0.325568, 0, 0.325568, 0.945519, 2.77556e-17, -0.258, 0.116)
+
+[node name="pointerFinger2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2" index="1"]
+transform = Transform3D(0.936564, 0.341449, 0.0791272, -0.306978, 0.690146, 0.655334, 0.169154, -0.638052, 0.751183, -0.132, -0.449, 0.0115)
+
+[node name="fingerSegment7" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/pointerFinger2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.669131, -0.743145, 0, 0.743145, 0.669131, 2.77556e-16, -0.209, 0.009)
+
+[node name="fingerSegment8" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/pointerFinger2/fingerSegment7" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.843391, -0.5373, 0, 0.5373, 0.843391, -2.22045e-16, -0.202, 0.012)
+
+[node name="middleFinger2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, -0.002, -0.4575, 0.0115)
+
+[node name="fingerSegment9" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/middleFinger2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.843391, -0.5373, 0, 0.5373, 0.843391, 2.22045e-16, -0.239, 0.0085)
+
+[node name="fingerSegment10" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/middleFinger2/fingerSegment9" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.461749, -0.887011, 0, 0.887011, 0.461749, 2.77556e-17, -0.2115, 0.0125)
+
+[node name="pinkieFinger2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2" index="3"]
+transform = Transform3D(0.925417, -0.216127, 0.311277, 0.163176, 0.96863, 0.187426, -0.34202, -0.122654, 0.931653, 0.131, -0.449, 0.0115)
+
+[node name="fingerSegment11" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/pinkieFinger2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, -0.208, 0.009)
+
+[node name="fingerSegment12" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/pinkieFinger2/fingerSegment11" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, -0.202, 0.012)
+
+[node name="thumb2" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2" index="4"]
+transform = Transform3D(0.444475, 0.88881, -0.111619, -0.881875, 0.412282, -0.228737, -0.157285, 0.200102, 0.967068, -0.1555, -0.3005, -0.1185)
+
+[node name="thumbSegment3" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/thumb2" index="1"]
+transform = Transform3D(0.891007, -0.45399, 0, 0.45399, 0.891007, 0, 0, 0, 1, 0.003, -0.22125, 0)
+
+[node name="thumbSegment4" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/upperbody/torso/arms/leftArm/elbow2/hand2/handSegment2/thumb2/thumbSegment3" index="2"]
+transform = Transform3D(0.848048, -0.529919, 0, 0.529919, 0.848048, 0, 0, 0, 1, -0.0055, -0.19925, 0)
+
+[node name="rightLeg" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/legs" index="0"]
+transform = Transform3D(0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 0, 0, 1, 0.307125, 3.87263, 0.338875)
+
+[node name="leftLeg" parent="Jumpscare/Mothman/blockbench_export/Node/moth/body/legs" index="1"]
+transform = Transform3D(0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 0, 0, 1, 0.307125, 3.67362, -0.338875)
+
+[node name="AnimationPlayer" parent="Jumpscare/Mothman/blockbench_export" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_3okql")
+}
+speed_scale = 2.0
+
+[node name="MothJumpscare" type="AnimationPlayer" parent="Jumpscare/Mothman/blockbench_export" index="2"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_lyt1s")
+}
+speed_scale = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="Jumpscare"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.27767, 4.73208, -6.97548)
+
+[node name="MothJumpscareSound" type="AudioStreamPlayer" parent="Jumpscare"]
+stream = ExtResource("38_lcwp0")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3838, 0, -9.95729)
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_c87je")
+volume_db = -11.2
+script = ExtResource("40_daalq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3k6b1")
+
+[connection signal="animation_finished" from="CameraAnimator" to="Player" method="_on_camera_animator_animation_finished"]
+[connection signal="animation_finished" from="CameraAnimator2" to="Player/HideCamera/ButtonController/GetUp_Button" method="_on_camera_animator_2_animation_finished"]
+[connection signal="animation_finished" from="AtticCameraAnimator" to="Player/AtticCamera/AtticButtonController/GoBack_Button" method="_on_attic_camera_animator_animation_finished"]
+[connection signal="animation_finished" from="AtticCameraAnimator2" to="AtticLadder" method="_on_attic_camera_animator_2_animation_finished"]
+[connection signal="hidden" from="Player/HideCamera/ButtonController/GetUp_Button" to="Player/HideCamera/ButtonController/GetUp_Button" method="_on_hidden"]
+[connection signal="hidden" from="Player/AtticCamera/AtticButtonController/GoBack_Button" to="Player/AtticCamera/AtticButtonController/GoBack_Button" method="_on_hidden"]
+[connection signal="jumpscare" from="CryptidController" to="Jumpscare" method="_on_cryptid_controller_jumpscare"]
+[connection signal="input_event" from="Bed" to="Player" method="_on_area_3d_input_event"]
+[connection signal="mouse_exited" from="Bed" to="Player" method="_on_area_3d_mouse_exited"]
+[connection signal="input_event" from="AtticLadder" to="Player" method="_on_attic_ladder_input_event"]
+[connection signal="input_event" from="AtticLadder" to="AtticLadder" method="_on_input_event"]
+[connection signal="mouse_exited" from="AtticLadder" to="Player" method="_on_attic_ladder_mouse_exited"]
 [connection signal="input_event" from="objects/TableItems/radio/Radio" to="Player" method="_on_radio_input_event"]
+
+[editable path="Player"]
+[editable path="CryptidController/Mothman"]
+[editable path="Bed"]
+[editable path="AtticLadder"]
+[editable path="Jumpscare/Mothman"]
