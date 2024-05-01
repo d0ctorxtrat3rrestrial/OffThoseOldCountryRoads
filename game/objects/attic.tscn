@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://fot8fpv4smlm"]
+
+[ext_resource type="PackedScene" uid="uid://csvknx4jk0mmt" path="res://game/models/atticladder/atticlatter.gltf" id="1_d1wb5"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_nlvhe"]
+aabb = AABB(0, 0, 0, 6.634, 20, 6.245)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwdwc"]
+size = Vector3(7.21875, 16.1464, 9.88466)
+
+[node name="Area3D" type="Area3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.791306, 0, 0, 0, 1.45141, -3.9963, 0, -4.93783)
+mesh = SubResource("PlaceholderMesh_nlvhe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.410856, 8.33247, -0.566297)
+shape = SubResource("BoxShape3D_uwdwc")
+
+[node name="atticladder" parent="." instance=ExtResource("1_d1wb5")]
+transform = Transform3D(1.59259, 0, 0, 0, 1.59259, 0, 0, 0, 1.59259, 0.915422, 0, 0.402654)

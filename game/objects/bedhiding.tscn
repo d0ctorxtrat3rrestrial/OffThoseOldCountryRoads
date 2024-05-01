@@ -1,22 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnufkcpxknk05"]
+[gd_scene load_steps=5 format=3 uid="uid://bnufkcpxknk05"]
 
+[ext_resource type="Script" path="res://game/scripts/bedhiding.gd" id="1_gfm7w"]
 [ext_resource type="PackedScene" uid="uid://dd152vpxwtc5x" path="res://game/models/bed/bed.gltf" id="1_p6ind"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k7ab6"]
-size = Vector3(6.63416, 5.565, 9.95898)
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_s7633"]
 aabb = AABB(0, 0, 0, 6.634, 5.565, 9.959)
 
-[node name="Area3D" type="Area3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7ab6"]
+size = Vector3(6.63416, 5.565, 6.61426)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44562, 2.76254, 4.47949)
-shape = SubResource("BoxShape3D_k7ab6")
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_gfm7w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7284, 0.00523663, -0.420092)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.697576, -8.27454, 0, 3.10224)
 mesh = SubResource("PlaceholderMesh_s7633")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.43, 0, 0, 0, 1.43, 0, 0, 0, 1.43, -4.94538, 2.31453, 5.53328)
+shape = SubResource("BoxShape3D_k7ab6")
+
 [node name="bed" parent="." instance=ExtResource("1_p6ind")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.0701318, -0.10885, -0.0733962)
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 0, 0)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
