@@ -13,7 +13,9 @@ config_version=5
 config/name="OffThoseOldCountryRoads"
 run/main_scene="res://game/menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
 run/emulate_touch_from_mouse=false
 
 [autoload]
