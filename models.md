@@ -1,4 +1,4 @@
-[i]All models are made by me in Blockbench[/i]
+All models are made by me in Blockbench
 ### Attic
 ![](imagereference/rX0mdm1.png)
 ### Attic Detail 1
